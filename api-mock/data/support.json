@@ -1,0 +1,16 @@
+{
+  "tickets": [
+    { "id": 1, "title": "Impossible de se connecter au Wi-Fi invité", "description": "Depuis ce matin, le réseau invité du deuxième étage refuse toutes les connexions des stagiaires.", "category": "reseau", "priority": "urgent", "status": "in-progress", "requester": "nadia.benali@campus-lyon.fr", "assignee": "Karim Diallo", "createdAt": "{{J-1}}T08:42:00.000Z" },
+    { "id": 2, "title": "Licence du logiciel de montage expirée", "description": "Le logiciel de montage vidéo affiche une licence expirée sur les postes de la salle 204.", "category": "logiciel", "priority": "high", "status": "open", "requester": "hugo.lambert@campus-lyon.fr", "assignee": null, "createdAt": "{{J-4}}T13:10:00.000Z" },
+    { "id": 3, "title": "Écran qui clignote", "description": "L'écran secondaire de mon poste clignote toutes les deux minutes, même après redémarrage.", "category": "materiel", "priority": "normal", "status": "open", "requester": "lea.moreau@campus-lyon.fr", "assignee": null, "createdAt": "{{J-2}}T09:05:00.000Z" },
+    { "id": 4, "title": "Mot de passe de messagerie bloqué", "description": "Mon compte de messagerie est verrouillé après trois tentatives, je ne peux plus lire mes courriels.", "category": "compte", "priority": "high", "status": "resolved", "requester": "paul.girard@campus-lyon.fr", "assignee": "Julie Perrin", "createdAt": "{{J-6}}T16:30:00.000Z" },
+    { "id": 5, "title": "Imprimante du premier étage hors ligne", "description": "L'imprimante du premier étage n'apparaît plus dans la liste des imprimantes disponibles.", "category": "materiel", "priority": "low", "status": "closed", "requester": "camille.faure@campus-lyon.fr", "assignee": "Karim Diallo", "createdAt": "{{J-10}}T10:00:00.000Z" },
+    { "id": 6, "title": "Demande d'accès au dossier partagé de la promotion", "description": "Je n'ai pas accès au dossier partagé de la promotion CDA, alors que mes collègues formateurs l'ont.", "category": "compte", "priority": "normal", "status": "open", "requester": "hugo.lambert@campus-lyon.fr", "assignee": null, "createdAt": "{{J+0}}T07:55:00.000Z" }
+  ],
+  "comments": [
+    { "id": 1, "ticketId": 1, "author": "Karim Diallo", "body": "Le point d'accès du deuxième étage a redémarré cette nuit, je vérifie sa configuration.", "createdAt": "{{J-1}}T09:20:00.000Z" },
+    { "id": 2, "ticketId": 1, "author": "nadia.benali@campus-lyon.fr", "body": "Merci, la session de formation commence à 14h.", "createdAt": "{{J-1}}T09:31:00.000Z" },
+    { "id": 3, "ticketId": 4, "author": "Julie Perrin", "body": "Compte déverrouillé, un nouveau mot de passe temporaire vous a été envoyé par SMS.", "createdAt": "{{J-5}}T08:15:00.000Z" },
+    { "id": 4, "ticketId": 5, "author": "Karim Diallo", "body": "Pilote réinstallé sur le serveur d'impression.", "createdAt": "{{J-9}}T11:40:00.000Z" }
+  ]
+}

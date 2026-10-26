@@ -1,0 +1,22 @@
+{
+  "items": [
+    { "id": 1, "name": "Ordinateur portable 14 pouces", "category": "ordinateur", "serialNumber": "PC-2024-001", "status": "available" },
+    { "id": 2, "name": "Ordinateur portable 14 pouces", "category": "ordinateur", "serialNumber": "PC-2024-002", "status": "available" },
+    { "id": 3, "name": "Ordinateur portable 16 pouces", "category": "ordinateur", "serialNumber": "PC-2025-014", "status": "maintenance" },
+    { "id": 4, "name": "Tablette 11 pouces", "category": "tablette", "serialNumber": "TB-2025-003", "status": "available" },
+    { "id": 5, "name": "Tablette 11 pouces", "category": "tablette", "serialNumber": "TB-2025-004", "status": "available" },
+    { "id": 6, "name": "Caméra 4K", "category": "video", "serialNumber": "CAM-2023-001", "status": "available" },
+    { "id": 7, "name": "Trépied", "category": "video", "serialNumber": "TRE-2022-007", "status": "available" },
+    { "id": 8, "name": "Micro-cravate sans fil", "category": "audio", "serialNumber": "MIC-2024-002", "status": "available" },
+    { "id": 9, "name": "Enceinte portable", "category": "audio", "serialNumber": "ENC-2021-001", "status": "available" },
+    { "id": 10, "name": "Vidéoprojecteur portable", "category": "video", "serialNumber": "VP-2024-001", "status": "available" }
+  ],
+  "loans": [
+    { "id": 1, "itemId": 1, "borrower": "Yanis Haddad", "borrowerEmail": "yanis.haddad@campus-lyon.fr", "startDate": "{{J-5}}", "dueDate": "{{J+2}}", "returnedAt": null },
+    { "id": 2, "itemId": 4, "borrower": "Emma Rousseau", "borrowerEmail": "emma.rousseau@campus-lyon.fr", "startDate": "{{J-12}}", "dueDate": "{{J-2}}", "returnedAt": null },
+    { "id": 3, "itemId": 6, "borrower": "Lucas Bernard", "borrowerEmail": "lucas.bernard@campus-lyon.fr", "startDate": "{{J-20}}", "dueDate": "{{J-10}}", "returnedAt": "{{J-11}}" },
+    { "id": 4, "itemId": 6, "borrower": "Sofia Mercier", "borrowerEmail": "sofia.mercier@campus-lyon.fr", "startDate": "{{J-3}}", "dueDate": "{{J+4}}", "returnedAt": null },
+    { "id": 5, "itemId": 8, "borrower": "Yanis Haddad", "borrowerEmail": "yanis.haddad@campus-lyon.fr", "startDate": "{{J-9}}", "dueDate": "{{J-1}}", "returnedAt": null },
+    { "id": 6, "itemId": 2, "borrower": "Inès Garnier", "borrowerEmail": "ines.garnier@campus-lyon.fr", "startDate": "{{J-30}}", "dueDate": "{{J-16}}", "returnedAt": "{{J-15}}" }
+  ]
+}

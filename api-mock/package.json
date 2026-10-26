@@ -1,0 +1,14 @@
+{
+  "name": "etude-de-cas-api-mock",
+  "private": true,
+  "description": "Fausses API REST des trois sujets de l'etude de cas (seance 12).",
+  "scripts": {
+    "salles": "node reset.cjs salles && npm run serve",
+    "materiel": "node reset.cjs materiel && npm run serve",
+    "support": "node reset.cjs support && npm run serve",
+    "serve": "json-server db.json --port 3000 --routes routes.json --middlewares middleware.cjs --delay 300"
+  },
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
+}
