@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('styles/reset.css');
+@import url('styles/tokens.css');
+@import url('styles/theme.css');
+@import url('styles/base.css');
+@import url('styles/layout.css');
+@import url('styles/components.css');
+@import url('styles/utilities.css');
