@@ -7,10 +7,6 @@
 <h1>Nouveau ticket</h1>
 <p>Tous les champs sont obligatoires.</p>
 
-@if (successMessage()) {
-  <p role="status">{{ successMessage() }}</p>
-}
-
 <form class="form" [formRoot]="ticketForm">
   <div>
     <label for="title">Titre</label>
