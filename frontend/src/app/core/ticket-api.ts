@@ -1,60 +1,58 @@
+import { HttpClient } from '@angular/common/http';
 import { Service, inject } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Ticket } from '../model/ticket';
 import { Comment } from '../model/comment';
 
+export type TicketDraft = Omit<Ticket, 'id'>;
+export type CommentDraft = Omit<Comment, 'id'>;
+
+const TICKETS_URL = '/api/tickets';
+const COMMENTS_URL = '/api/comments';
+
 @Service()
 export class TicketApi {
   private readonly http = inject(HttpClient);
-
-  private readonly ticketsUrl = '/api/tickets';
-  private readonly commentsUrl = '/api/comments';
 
   getTickets(filters?: {
     status?: string;
     priority?: string;
     query?: string;
   }): Observable<Ticket[]> {
-    let params = new HttpParams();
-
-    if (filters?.status) {
-      params = params.set('status', filters.status);
-    }
-
-    if (filters?.priority) {
-      params = params.set('priority', filters.priority);
-    }
-
-    if (filters?.query) {
-      params = params.set('query', filters.query);
-    }
-
-    return this.http.get<Ticket[]>(this.ticketsUrl, { params });
-  }
-
-  getTicketById(id: number): Observable<Ticket> {
-    return this.http.get<Ticket>(`${this.ticketsUrl}/${id}`, {
-      params: new HttpParams().set('_embed', 'comments'),
+    return this.http.get<Ticket[]>(TICKETS_URL, {
+      params: {
+        ...(filters?.status && { status: filters.status }),
+        ...(filters?.priority && { priority: filters.priority }),
+        ...(filters?.query && { query: filters.query }),
+      },
     });
   }
 
-  createTicket(ticket: Omit<Ticket, 'id'>): Observable<Ticket> {
-    return this.http.post<Ticket>(this.ticketsUrl, ticket);
+  getById(id: number): Observable<Ticket> {
+    return this.http.get<Ticket>(`${TICKETS_URL}/${id}`, {
+      params: { _embed: 'comments' },
+    });
   }
 
-  updateTicket(id: number, changes: Partial<Ticket>): Observable<Ticket> {
-    return this.http.patch<Ticket>(`${this.ticketsUrl}/${id}`, changes);
+  create(draft: TicketDraft): Observable<Ticket> {
+    return this.http.post<Ticket>(TICKETS_URL, draft);
+  }
+
+  update(id: number, changes: Partial<Ticket>): Observable<Ticket> {
+    return this.http.patch<Ticket>(`${TICKETS_URL}/${id}`, changes);
   }
 
   getComments(ticketId: number): Observable<Comment[]> {
-    const params = new HttpParams().set('ticketId', ticketId).set('_sort', 'createdAt');
-
-    return this.http.get<Comment[]>(this.commentsUrl, { params });
+    return this.http.get<Comment[]>(COMMENTS_URL, {
+      params: {
+        ticketId,
+        _sort: 'createdAt',
+      },
+    });
   }
 
-  addComment(comment: Omit<Comment, 'id'>): Observable<Comment> {
-    return this.http.post<Comment>(this.commentsUrl, comment);
+  addComment(draft: CommentDraft): Observable<Comment> {
+    return this.http.post<Comment>(COMMENTS_URL, draft);
   }
 }

@@ -1,0 +1,24 @@
+<header class="header">
+  <mat-toolbar>
+    <div class="logo">
+      <h1>YJR</h1>
+    </div>
+
+    <nav aria-label="Navigation principale">
+      <a matButton routerLink="/tickets" routerLinkActive="active" ariaCurrentWhenActive="page"
+        >Tickets</a
+      >
+      <a
+        matButton
+        routerLink="/tickets/nouveau"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Nouveau ticket</a
+      >
+    </nav>
+  </mat-toolbar>
+</header>
+
+<main class="container">
+  <router-outlet />
+</main>
