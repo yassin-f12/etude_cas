@@ -10,23 +10,37 @@ Au Campus Numérique de Lyon, les demandes d'assistance informatique arrivent pa
 cd api-mock && npm install && npm run support
 ```
 
-| Méthode | Route | Rôle |
-|---|---|---|
-| GET | `/api/tickets` | Les tickets (`?status=open`, `?priority=urgent`, `?q=wifi`) |
-| GET | `/api/tickets/:id` | Un ticket (`?_embed=comments` : avec ses commentaires) |
-| POST | `/api/tickets` | Créer un ticket (le serveur fixe `status`, `assignee` et `createdAt`) |
-| PATCH | `/api/tickets/:id` | Modifier un ticket : `{ "status": "in-progress", "assignee": "Karim Diallo" }` |
-| GET | `/api/comments` | Les commentaires (`?ticketId=1&_sort=createdAt`) |
-| POST | `/api/comments` | Ajouter un commentaire (le serveur fixe `createdAt`) |
+| Méthode | Route              | Rôle                                                                           |
+| ------- | ------------------ | ------------------------------------------------------------------------------ |
+| GET     | `/api/tickets`     | Les tickets (`?status=open`, `?priority=urgent`, `?q=wifi`)                    |
+| GET     | `/api/tickets/:id` | Un ticket (`?_embed=comments` : avec ses commentaires)                         |
+| POST    | `/api/tickets`     | Créer un ticket (le serveur fixe `status`, `assignee` et `createdAt`)          |
+| PATCH   | `/api/tickets/:id` | Modifier un ticket : `{ "status": "in-progress", "assignee": "Karim Diallo" }` |
+| GET     | `/api/comments`    | Les commentaires (`?ticketId=1&_sort=createdAt`)                               |
+| POST    | `/api/comments`    | Ajouter un commentaire (le serveur fixe `createdAt`)                           |
 
 ```json
-{ "id": 2, "title": "Licence du logiciel de montage expirée", "description": "...",
-  "category": "logiciel", "priority": "high", "status": "open",
-  "requester": "hugo.lambert@campus-lyon.fr", "assignee": null, "createdAt": "2026-10-28T13:10:00.000Z" }
+{
+  "id": 2,
+  "title": "Licence du logiciel de montage expirée",
+  "description": "...",
+  "category": "logiciel",
+  "priority": "high",
+  "status": "open",
+  "requester": "hugo.lambert@campus-lyon.fr",
+  "assignee": null,
+  "createdAt": "2026-10-28T13:10:00.000Z"
+}
 ```
 
 ```json
-{ "id": 1, "ticketId": 1, "author": "Karim Diallo", "body": "...", "createdAt": "2026-10-31T09:20:00.000Z" }
+{
+  "id": 1,
+  "ticketId": 1,
+  "author": "Karim Diallo",
+  "body": "...",
+  "createdAt": "2026-10-31T09:20:00.000Z"
+}
 ```
 
 Catégories : `materiel`, `logiciel`, `reseau`, `compte`. Priorités : `low`, `normal`, `high`, `urgent`. Statuts : `open`, `in-progress`, `resolved`, `closed`.
@@ -83,7 +97,7 @@ Indice pour la règle 2 : décrivez les transitions dans un objet plutôt qu'ave
 
 ```ts
 const TRANSITIONS: Record<TicketStatus, TicketStatus[]> = {
-  open: ['in-progress'],
+  open: ["in-progress"],
   // ...
 };
 ```
