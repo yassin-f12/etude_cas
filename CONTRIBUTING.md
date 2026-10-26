@@ -62,3 +62,24 @@ Exemples :
 - Éviter de modifier les fichiers attribués à un autre membre sans coordination.
 - Communiquer rapidement sur les dépendances et les conflits.
 - À la livraison, intégrer tout le travail validé dans `main` et mettre à jour le `README.md`.
+
+Développeur 1 - Liste des tickets
+
+- Afficher les tickets depuis l'API.
+- Gérer chargement, erreurs et liste vide.
+- Ajouter les filtres par statut, priorité et recherche.
+- Trier les tickets avec ticket-rules.ts.
+
+Développeur 2 - Détail et commentaires
+
+- Afficher un ticket par son identifiant.
+- Afficher les commentaires du plus ancien au plus récent.
+- Ajouter un commentaire sans recharger la page.
+- Empêcher l'ajout de commentaires sur un ticket fermé.
+
+Yassin - Création et règles métier
+
+- Créer le formulaire de nouveau ticket.
+- Valider les champs obligatoires et l'e-mail.
+- Vérifier les transitions de statut et l'obligation d'affecter un technicien.
+- Tester les règles dans ticket-rules.ts.
