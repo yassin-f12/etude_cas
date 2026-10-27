@@ -42,3 +42,19 @@ export function isStale(ticket: Ticket, now: Date = new Date()): boolean {
 export function canAddComment(status: TicketStatus): boolean {
   return status !== 'closed';
 }
+
+export function canChangeStatus(
+  status: TicketStatus,
+  nextStatus: TicketStatus,
+  assignee?: string | null,
+): boolean {
+  if (!nextStatuses(status).includes(nextStatus)) {
+    return false;
+  }
+
+  if (nextStatus === 'in-progress' && !assignee?.trim()) {
+    return false;
+  }
+
+  return true;
+}

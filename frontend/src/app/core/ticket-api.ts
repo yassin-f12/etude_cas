@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Ticket } from '../model/ticket';
@@ -11,9 +11,7 @@ export type CommentDraft = Omit<Comment, 'id' | 'createdAt'>;
 const TICKETS_URL = '/api/tickets';
 const COMMENTS_URL = '/api/comments';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class TicketApi {
   private readonly http = inject(HttpClient);
 
