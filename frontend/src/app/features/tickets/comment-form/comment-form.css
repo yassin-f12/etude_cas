@@ -1,0 +1,42 @@
+form {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  justify-self: start;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #245fa6;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+[role='alert'] {
+  color: #b42318;
+}
+
+[role='status'] {
+  color: #187545;
+}

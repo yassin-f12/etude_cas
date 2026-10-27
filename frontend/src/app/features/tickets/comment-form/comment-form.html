@@ -1,0 +1,38 @@
+<form (ngSubmit)="submitComment()">
+  <label for="author">Ton adresse e-mail</label>
+  <input
+    id="author"
+    name="author"
+    type="email"
+    [(ngModel)]="author"
+    required
+    email
+    placeholder="nom@campus-lyon.fr"
+  />
+
+  <label for="body">Ton commentaire</label>
+  <textarea
+    id="body"
+    name="body"
+    [(ngModel)]="body"
+    required
+    rows="4"
+    placeholder="Décris les vérifications effectuées ou les actions réalisées..."
+  ></textarea>
+
+  @if (error()) {
+    <p role="alert">{{ error() }}</p>
+  }
+
+  @if (success()) {
+    <p role="status">{{ success() }}</p>
+  }
+
+  <button type="submit" [disabled]="!author.trim() || !body.trim() || submitting()">
+    @if (submitting()) {
+      Envoi en cours...
+    } @else {
+      Ajouter le commentaire
+    }
+  </button>
+</form>

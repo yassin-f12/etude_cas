@@ -1,0 +1,105 @@
+<main>
+  <h1>Détail du ticket</h1>
+
+  @if (error()) {
+    <p role="alert">{{ error() }}</p>
+  }
+
+  @if (ticket(); as t) {
+    <section>
+      <h2>{{ t.title }}</h2>
+
+      <p>{{ t.description }}</p>
+
+      <p><strong>Catégorie :</strong> {{ t.category }}</p>
+      <p><strong>Priorité :</strong> {{ t.priority }}</p>
+      <p>
+        <strong>Statut :</strong>
+        <span class="status-badge" [attr.data-status]="t.status">
+          @switch (t.status) {
+            @case ('open') {
+              Ouvert
+            }
+            @case ('in-progress') {
+              En cours
+            }
+            @case ('closed') {
+              Fermé
+            }
+            @default {
+              {{ t.status }}
+            }
+          }
+        </span>
+      </p>
+      <label for="ticket-status">Modifier le statut :</label>
+
+      <select
+        id="ticket-status"
+        [ngModel]="t.status"
+        (ngModelChange)="changeStatus($event)"
+        [disabled]="!canChangeStatus()"
+      >
+        @for (status of nextStatuses(); track status) {
+          <option [value]="status">
+            @switch (status) {
+              @case ('open') {
+                Ouvert
+              }
+              @case ('in-progress') {
+                En cours
+              }
+              @case ('closed') {
+                Fermé
+              }
+            }
+          </option>
+        }
+      </select>
+      <p><strong>Demandeur :</strong> {{ t.requester }}</p>
+    </section>
+  } @else {
+    @if (!error()) {
+      <p>Chargement du ticket...</p>
+    }
+  }
+
+  <section aria-labelledby="comments-title">
+    <h2 id="comments-title">Commentaires</h2>
+
+    @if (commentsLoading()) {
+      <p>Chargement des commentaires...</p>
+    } @else if (comments().length === 0) {
+      <p>Aucun commentaire pour le moment.</p>
+    } @else {
+      @for (comment of comments(); track comment.id) {
+        <article>
+          <h3>{{ comment.author }}</h3>
+          <p>{{ comment.body }}</p>
+          <time [attr.datetime]="comment.createdAt">
+            {{ comment.createdAt | date: 'dd/MM/yyyy à HH:mm' }}
+          </time>
+        </article>
+      }
+    }
+
+    <!-- @if (loading()) {
+      <p>Chargement du ticket...</p>
+    } -->
+
+    @if (ticket(); as t) {
+      @if (canAddComment()) {
+        <h3>Ajouter un commentaire</h3>
+
+        <app-comment-form
+          [ticketId]="t.id"
+          (commentAdded)="comments.update((list) => [...list, $event])"
+        />
+      } @else {
+        <p class="closed-message">
+          Ce ticket est fermé. Il n'est plus possible d'ajouter un commentaire.
+        </p>
+      }
+    }
+  </section>
+</main>
